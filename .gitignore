@@ -1,0 +1,11 @@
+.idea
+**/__pycache__/
+*.pyc
+*.sql
+*.7z
+server/media
+debug.Dockerfile
+debug.docker-compose.yaml
+.env
+.vscode
+.isort.cfg
