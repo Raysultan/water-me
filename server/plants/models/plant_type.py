@@ -1,9 +1,7 @@
 from django.db import models
 
 
-# model for internal user
-# creation and adjustments made only from admin panel
-class PlantLocation(models.Model):
+class PlantType(models.Model):
     name = models.CharField(
         max_length=255,
         unique=True,

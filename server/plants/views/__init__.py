@@ -1,2 +1,4 @@
 from .plant_action_type_list import PlantActionTypeListAPIView
+from .plant_create import PlantCreateAPIView
 from .plant_list import PlantListAPIView
+from .plant_location import PlantLocationAPIView
