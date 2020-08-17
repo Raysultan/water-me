@@ -8,7 +8,8 @@ class PlantLocationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PlantLocation
-        fields = ('name',)
+        fields = ('id', 'name',)
+        read_only_fields = ('id',)
 
     def validate_name(self, name: str) -> str:
         if PlantLocation.objects.filter(name=name.capitalize()).exists():

@@ -5,6 +5,9 @@ from rest_framework import serializers
 
 from ..errors import PlantErrors
 from ..models import Plant, PlantAction
+from .plant_location import PlantLocationSerializer
+from .plant_type import PlantTypeSerializer
+from .pot_color import PotColorSerializer
 
 
 class PlantActionSerializer(serializers.ModelSerializer):
@@ -35,3 +38,21 @@ class PlantCreateSerializer(serializers.ModelSerializer):
         ])
 
         return plant
+
+
+class PlantListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Plant
+        fields = ('id', 'name', 'location',)
+
+
+class PlantUpdateRetrieveDeleteSerializer(serializers.ModelSerializer):
+    location = PlantLocationSerializer()
+    plant_type = PlantTypeSerializer()
+    pot_color = PotColorSerializer()
+
+    # ! validation to relativity of plant to user
+
+    class Meta:
+        model = Plant
+        fields = ('name', 'location', 'plant_type', 'pot_color')
