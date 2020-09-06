@@ -16,3 +16,6 @@ class PlantAction(models.Model):
         on_delete=models.CASCADE,
         related_name='actions',
     )
+
+    def __str__(self):
+        return f'{self.created_at} - {self.plant.name} - {self.plant.user}'

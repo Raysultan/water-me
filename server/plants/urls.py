@@ -1,12 +1,18 @@
-from django.urls import path
+from django.urls import include, path
+from rest_framework.routers import DefaultRouter
 
 from .views import (
-    PlantActionTypeListAPIView, PlantCreateAPIView, PlantListAPIView, PlantLocationAPIView,
-    PlantNoteCreateAPIView, PlantNoteListAPIView, PlantNoteUpdateRetrieveDeleteAPIView,
-    PlantUpdateRetrieveDeleteAPIView
+    PlantActionTypeListAPIView, PlantActionViewSet, PlantCreateAPIView, PlantListAPIView,
+    PlantLocationAPIView, PlantNoteCreateAPIView, PlantNoteListAPIView,
+    PlantNoteUpdateRetrieveDeleteAPIView, PlantUpdateRetrieveDeleteAPIView
 )
 
+router = DefaultRouter()
+router.register('', PlantActionViewSet, basename='actions')
+
 urlpatterns = [
+    path('actions/', include(router.urls)),
+
     path('', PlantListAPIView.as_view(), name='plant-list'),
     path('add/', PlantCreateAPIView.as_view(), name='plant-create'),
     path('<str:pk>/', PlantUpdateRetrieveDeleteAPIView.as_view(), name='plant-create'),

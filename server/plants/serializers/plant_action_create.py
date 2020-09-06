@@ -3,7 +3,8 @@ from rest_framework import serializers
 from ..models import PlantAction
 
 
-class PlantActionCreateSerializer(serializers.ModelSerializer):
+class PlantActionSerializer(serializers.ModelSerializer):
     class Meta:
         model = PlantAction
-        fields = ('action_type', 'plant')
+        fields = ('id', 'created_at', 'action_type', 'plant')
+        read_only_fields = ('id', 'created_at')

@@ -5,15 +5,10 @@ from rest_framework import serializers
 
 from ..errors import PlantErrors
 from ..models import Plant, PlantAction
+from .plant_action_create import PlantActionSerializer
 from .plant_location import PlantLocationSerializer
 from .plant_type import PlantTypeSerializer
 from .pot_color import PotColorSerializer
-
-
-class PlantActionSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PlantAction
-        fields = ('action_type', 'created_at')
 
 
 class PlantCreateSerializer(serializers.ModelSerializer):
